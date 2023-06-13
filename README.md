@@ -1,5 +1,4 @@
 # StarWar
-this project is a star-war api intergrate with angular.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.5.
 
 ## Development server
