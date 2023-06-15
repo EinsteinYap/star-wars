@@ -1,0 +1,36 @@
+
+<div *ngIf="loading" class="loading-screen">
+  <!-- Loading screen or spinner HTML content -->
+</div>
+
+<div class="container" *ngIf="!loading">
+<div class="row">
+  <input type="text" [(ngModel)]="searchValue" (keyup)="searchByName(searchValue)" placeholder="Search by name" class="search-bar"/>
+
+</div>
+
+
+  <div class="row" *ngIf="!loading">
+<app-card
+*ngFor="let person of people;  index as idx"
+  class="col-lg-3 col-md-4 col-sm-12 "
+  btnColor="add"
+  cardBtn="Favorite"
+  name="{{ person.name }}"
+  planet="{{person.homeworld }}"
+  gender="{{ person.gender }}"
+  height="{{ person.height }}"
+  birth="{{ person.birth_year }}"
+  hair="{{ person.hair_color }}"
+  skin="{{ person.skin_color }}"
+  eye="{{ person.eye_color }}"
+  (buttonClicked)="handleButtonClicked(person.name)"
+  style="margin:0 auto;"
+></app-card>
+<ng-container *ngIf="!people.length">
+<app-no-data
+issue="No data Found"
+></app-no-data>
+  </ng-container>
+  </div>
+  </div>

@@ -1,0 +1,43 @@
+
+
+      <div>
+      <div class="card-container">
+        <div class="card">
+          <div class="box">
+            <div>
+              <div class="card-details container">
+                <div class="row">
+              <h2 class="col-12">Name:{{ name }}</h2>
+              <h2 class="col-12">Planet:{{ planet }}</h2>
+              <h2 class="col-12">Gender:{{ gender }}</h2>
+              <h2 class="col-12">Height:{{ height }}</h2>
+              <h2 class="col-12">Birth Year:{{ birth }}</h2>
+              <h2 class="col-12">Eye:{{ eye }}</h2>
+              <h2 class="col-12">Hair:{{ hair }}</h2>
+              <h2 class="col-12">Skin:{{ skin }}</h2>
+              <h2 class="col-12">{{ noFavorite }}</h2>
+            </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <div>
+        <a
+          class="neon-button "
+          (click)="handleButtonClick()"
+          [ngClass]="[btnColor === 'add' ? 'addBtn' : 'deleteBtn']"
+        >
+        <span class="neon-inner"></span>
+        <span class="neon-inner"></span>
+        <span class="neon-inner"></span>
+        <span class="neon-inner"></span>
+        {{ cardBtn }}
+        </a>
+      </div>
+    </div>
+    </div>
+
+
+

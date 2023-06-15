@@ -1,0 +1,23 @@
+:host{
+  display: block;
+  background: url("https://i.pinimg.com/originals/2b/d3/8e/2bd38e31a22877a17fa63e3d771f8624.gif") !important ;
+  background-repeat:repeat-y;
+  background-size:contain !important;
+}
+
+//search css
+.search-bar {
+  background-color: black;
+  color: yellow;
+  border: 2px solid yellow;
+  padding: 8px 12px;
+  font-size: 16px;
+  font-weight: bold;
+  width: 50%;
+  box-sizing: border-box;
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+

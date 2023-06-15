@@ -1,0 +1,13 @@
+.bg{
+  display: flex;
+  justify-content: space-around;
+  background-color: black !important;
+  max-width: 100vw;
+  height: 15vh;
+}
+.title{
+  color: rgb(23, 253, 2);
+}
+.home:hover{
+  cursor: pointer;
+}

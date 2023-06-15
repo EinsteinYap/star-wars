@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
+*
+{
+	padding: 0;
+	font-family: 'Roboto', sans-serif;
+}
+
+.card-container
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.card-container .card
+{
+	position: relative;
+	width: 250px;
+	height: 300px !important;
+	text-align: center;
+	z-index: 10;
+	margin: 20px 0px 20px;
+}
+.card-container .card .box
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  background:url("https://images.saatchiart.com/saatchi/1667815/art/7939334/7006910-HSC00001-7.jpg");
+	box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  background-size: cover;
+	backdrop-filter: blur(15px);
+	border: 10px ridge purple;
+	z-index: 10;
+	border-radius:5px;
+}
+.card-details
+{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	z-index: 100;
+}
+.card-details
+{
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  h2{
+    color: rgb(23, 253, 2);
+    font-size: 18px !important;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 1);
+  }
+}
+
+
+
+
+// below are button's css
+.addBtn{
+  filter: hue-rotate(270deg)
+}
+.deleteBtn{
+  filter: hue-rotate(180deg)
+}
+.neon-buttons{
+  max-width: 10%;
+  max-height: 10%;
+  display: flex;
+  flex-direction: column;
+  // justify-content: left;
+  // align-items:left;
+  min-height: 100vh;
+	position: relative;
+
+
+}
+
+.neon-button{
+  position: relative;
+  display: inline-block;
+  padding: 1.5em 1.8em;
+  // margin: 2.5em 0;
+  color: #03e9f4;
+  font-size: 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: 0.5s;
+  letter-spacing:0.25em ;
+  -webkit-box-reflect: below 1px linear-gradient(transparent,#0005);
+}
+
+
+.neon-button:hover {
+  cursor: pointer;
+  background:#03e9f4;
+  color: #050801;
+  box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 200px #03e9f4;
+}
+
+.neon-button .neon-inner{
+  position: absolute;
+  display: block;
+}
+
+.neon-button .neon-inner:nth-child(1){
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 0.125em;
+  background: linear-gradient(90deg,transparent,#03e9f4);
+  animation:animate1 1s linear infinite;
+}
+@keyframes animate1
+{
+  0%
+  {
+      left:-100%;
+  }
+  50%,100%{
+      left:100%;
+  }
+}
+
+.neon-button .neon-inner:nth-child(2){
+  top: -100%;
+  right:0;
+  width: 0.125em;
+  height: 100%;
+  background: linear-gradient(180deg,transparent,#03e9f4);
+  animation:animate2 1s linear infinite;
+  animation-delay: 0.25s;
+}
+@keyframes animate2
+{
+  0%
+  {
+      top:-100%;
+  }
+  50%,100%{
+      top:100%;
+  }
+}
+
+.neon-button .neon-inner:nth-child(3){
+  bottom: 0;
+  right:-100%;
+  width: 100%;
+  height: 0.125em;
+  background: linear-gradient(270deg,transparent,#03e9f4);
+  animation:animate3 1s linear infinite;
+  animation-delay: 0.5s;
+}
+@keyframes animate3
+{
+  0%
+  {
+      right:-100%;
+  }
+  50%,100%{
+      right:100%;
+  }
+}
+
+.neon-button .neon-inner:nth-child(4){
+  bottom: -100%;
+  left:0;
+  width: 0.125em;
+  height: 100%;
+  background: linear-gradient(360deg,transparent,#03e9f4);
+  animation:animate4 1s linear infinite;
+  animation-delay: 0.75s;
+}
+@keyframes animate4
+{
+  0%
+  {
+      bottom:-100%;
+  }
+  50%,100%{
+      bottom:100%;
+  }
+}
+
