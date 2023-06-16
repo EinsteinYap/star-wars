@@ -9,6 +9,7 @@ import { CardComponent } from './components/card/card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FavoriteComponent } from './pages/favorite/favorite.component';
 import { NoDataComponent } from './components/no-data/no-data.component';
+import { LocationStrategy,HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: LocationStrategy, useClass: HashLocationStrategy
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
