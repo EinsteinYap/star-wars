@@ -625,7 +625,7 @@ constructor(private swapiService: SwapiService,private router: Router){
 ngOnInit() {
   this.loading&#x3D;true;
   const savedNamesString &#x3D; localStorage.getItem(&#x27;peopleSaved&#x27;);
-  this.savedNames &#x3D; savedNamesString ? JSON.parse(savedNamesString) : null;
+  this.savedNames &#x3D; savedNamesString ? JSON.parse(savedNamesString) : [];
   if(this.savedNames){
     this.getPeople();
   }

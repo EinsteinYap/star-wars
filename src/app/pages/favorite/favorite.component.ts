@@ -20,7 +20,7 @@ constructor(private swapiService: SwapiService,private router: Router){
 ngOnInit() {
   this.loading=true;
   const savedNamesString = localStorage.getItem('peopleSaved');
-  this.savedNames = savedNamesString ? JSON.parse(savedNamesString) : null;
+  this.savedNames = savedNamesString ? JSON.parse(savedNamesString) : [];
   if(this.savedNames){
     this.getPeople();
   }
