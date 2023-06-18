@@ -315,7 +315,7 @@ export class HeaderComponent {
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;bg&quot;&gt;
   &lt;img src&#x3D;&quot;https://media.tenor.com/4sL95F-2BjwAAAAd/earth.gif&quot; alt&#x3D;&quot;&quot; (click)&#x3D;&quot;redirectToHome()&quot; class&#x3D;&quot;home img-fluid&quot;&gt;
 
-  &lt;img src&#x3D;&quot;https://64.media.tumblr.com/c1aa75f05d356f8430992d88fa50a000/tumblr_ok9ah0M2Ql1rey868o1_540.gif&quot; alt&#x3D;&quot;&quot; class&#x3D;&quot;img-fluid&quot;&gt;
+  &lt;img src&#x3D;&quot;https://64.media.tumblr.com/c1aa75f05d356f8430992d88fa50a000/tumblr_ok9ah0M2Ql1rey868o1_540.gif&quot; alt&#x3D;&quot;&quot; class&#x3D;&quot;home img-fluid&quot;&gt;
   &lt;img src&#x3D;&quot;https://i.giphy.com/media/Eeruyn15oqbCJtkaw4/giphy.webp&quot; alt&#x3D;&quot;&quot; (click)&#x3D;&quot;redirectToFavorite()&quot; class&#x3D;&quot;home img-fluid&quot;&gt;
 &lt;/div&gt;
 </code></pre>
@@ -325,18 +325,40 @@ export class HeaderComponent {
                 <p class="comment">
                     <code>./header.component.scss</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss">.bg{
+                <pre class="line-numbers"><code class="language-scss">.bg {
   display: flex;
   justify-content: space-around;
   background-color: black !important;
   max-width: 100vw;
   height: 15vh;
 }
-.title{
+
+.title {
   color: rgb(23, 253, 2);
 }
-.home:hover{
+
+.home:hover {
   cursor: pointer;
+}
+
+@media (max-width: 576px) {
+  .bg {
+    flex-wrap: nowrap;
+    height: auto;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .home {
+    flex: 0 0 auto;
+    width: 100px; /* Adjust the width as per your preference */
+    height: 100px; /* Adjust the height as per your preference */
+    margin-right: 10px;
+  }
+
+  .home:last-child {
+    margin-right: 0;
+  }
 }
 </code></pre>
     </div>
@@ -366,7 +388,7 @@ export class HeaderComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="bg">  <img src="https://media.tenor.com/4sL95F-2BjwAAAAd/earth.gif" alt="" (click)="redirectToHome()" class="home img-fluid">  <img src="https://64.media.tumblr.com/c1aa75f05d356f8430992d88fa50a000/tumblr_ok9ah0M2Ql1rey868o1_540.gif" alt="" class="img-fluid">  <img src="https://i.giphy.com/media/Eeruyn15oqbCJtkaw4/giphy.webp" alt="" (click)="redirectToFavorite()" class="home img-fluid"></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="bg">  <img src="https://media.tenor.com/4sL95F-2BjwAAAAd/earth.gif" alt="" (click)="redirectToHome()" class="home img-fluid">  <img src="https://64.media.tumblr.com/c1aa75f05d356f8430992d88fa50a000/tumblr_ok9ah0M2Ql1rey868o1_540.gif" alt="" class="home img-fluid">  <img src="https://i.giphy.com/media/Eeruyn15oqbCJtkaw4/giphy.webp" alt="" (click)="redirectToFavorite()" class="home img-fluid"></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'FavoriteComponent', 'selector': 'app-favorite'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoadingComponent', 'selector': 'app-loading'},{'name': 'NoDataComponent', 'selector': 'app-no-data'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'HeaderComponent'};

@@ -1,13 +1,35 @@
-.bg{
+.bg {
   display: flex;
   justify-content: space-around;
   background-color: black !important;
   max-width: 100vw;
   height: 15vh;
 }
-.title{
+
+.title {
   color: rgb(23, 253, 2);
 }
-.home:hover{
+
+.home:hover {
   cursor: pointer;
+}
+
+@media (max-width: 576px) {
+  .bg {
+    flex-wrap: nowrap;
+    height: auto;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .home {
+    flex: 0 0 auto;
+    width: 100px; /* Adjust the width as per your preference */
+    height: 100px; /* Adjust the height as per your preference */
+    margin-right: 10px;
+  }
+
+  .home:last-child {
+    margin-right: 0;
+  }
 }
