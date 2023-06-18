@@ -136,6 +136,9 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
                                 <a href="#people" >people</a>
                             </li>
                             <li>
@@ -194,7 +197,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/favorite/favorite.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/favorite/favorite.component.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -273,8 +276,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="49"
-                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:49</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:56</a></div>
                 </td>
             </tr>
 
@@ -342,8 +345,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="36"
-                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:36</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:43</a></div>
                 </td>
             </tr>
 
@@ -379,8 +382,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:28</a></div>
                 </td>
             </tr>
 
@@ -416,8 +419,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="20"
+                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:20</a></div>
                 </td>
             </tr>
 
@@ -453,8 +456,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="67"
-                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:67</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:74</a></div>
                 </td>
             </tr>
 
@@ -476,6 +479,31 @@
     <h3 id="inputs">
         Properties
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/favorite/favorite.component.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -589,6 +617,7 @@ export class FavoriteComponent {
   people: any[] &#x3D; [];
   peopleSaved:string[]&#x3D;[];
   savedNames: string[]&#x3D;[];
+  loading&#x3D;true;
 
 constructor(private swapiService: SwapiService,private router: Router){
 
@@ -596,19 +625,25 @@ constructor(private swapiService: SwapiService,private router: Router){
 ngOnInit() {
   const savedNamesString &#x3D; localStorage.getItem(&#x27;peopleSaved&#x27;);
   this.savedNames &#x3D; savedNamesString ? JSON.parse(savedNamesString) : null;
-this.getPeople();
+  if(this.savedNames){
+    this.getPeople();
+  }
 }
 
 getPeople(){
+
   this.swapiService.getPeople().subscribe({
     next: (data) &#x3D;&gt; {
       this.people &#x3D; data.results.filter((person: { name: string; }) &#x3D;&gt; this.savedNames.includes(person.name));
       this.fetchHomeworldNames();
+      this.loading&#x3D;false;
     },
     error: (error) &#x3D;&gt; {
       console.log(&#x27;An error while fetching people:&#x27;, error);
     }
   });
+
+
 }
 fetchHomeworldNames() {
   this.people.forEach((person) &#x3D;&gt; {
@@ -650,9 +685,10 @@ redirectToHome() {
 
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">
-&lt;div class&#x3D;&quot;container favorite-bg&quot;&gt;
+&lt;app-loading *ngIf&#x3D;&quot;loading&quot;&gt;&lt;/app-loading&gt;
+&lt;div *ngIf&#x3D;&quot;!loading&quot; class&#x3D;&quot;container favorite-bg&quot;&gt;
   &lt;div class&#x3D;&quot;row&quot;&gt;
-&lt;ng-container *ngIf&#x3D;&quot;people.length&gt;0&quot;&gt;
+&lt;ng-container *ngIf&#x3D;&quot;people.length&gt;0 &quot;&gt;
 &lt;app-card
 *ngFor&#x3D;&quot;let person of people;  index as idx&quot;
   class&#x3D;&quot;col-lg-3 col-md-4 col-sm-12 &quot;
@@ -669,9 +705,11 @@ redirectToHome() {
   style&#x3D;&quot;margin:0 auto;&quot;
 &gt;&lt;/app-card&gt;
 &lt;/ng-container&gt;
-&lt;ng-container *ngIf&#x3D;&quot;!people.length&quot;&gt;
+&lt;ng-container *ngIf&#x3D;&quot;!people.length &amp;&amp; !loading&quot;&gt;
   &lt;app-no-data
+  cardBtn&#x3D;&quot;Go Home&quot;
   issue&#x3D;&quot;No Favorite Yet&quot;
+  (buttonClicked)&#x3D;&quot;redirectToHome()&quot;
   &gt;&lt;/app-no-data&gt;
     &lt;/ng-container&gt;
   &lt;/div&gt;
@@ -687,11 +725,14 @@ redirectToHome() {
   display: block;
   background: url(&quot;https://media.tenor.com/zz-EbWLyy4wAAAAd/star-wars-rebels-darth-vader-gif-star-wars.gif&quot;) !important ;
   background-repeat:no-repeat;
-  background-size:contain !important;
+  background-size:100% 100% !important;
+  z-index: -1;
+
 }
 .favorite-bg{
   height: 100vh;
 }
+
 </code></pre>
     </div>
 
@@ -720,8 +761,8 @@ redirectToHome() {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container favorite-bg">  <div class="row"><ng-container *ngIf="people.length>0"><app-card*ngFor="let person of people;  index as idx"  class="col-lg-3 col-md-4 col-sm-12 "  cardBtn="Delete"  name="{{ person.name }}"  planet="{{ person.homeworld }}"  gender="{{ person.gender }}"  height="{{ person.height }}"  birth="{{ person.birth_year }}"  hair="{{ person.hair_color }}"  skin="{{ person.skin_color }}"  eye="{{ person.eye_color }}"  (buttonClicked)="deleteButton(person.name)"  style="margin:0 auto;"></app-card></ng-container><ng-container *ngIf="!people.length">  <app-no-data  issue="No Favorite Yet"  ></app-no-data>    </ng-container>  </div>  </div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'FavoriteComponent', 'selector': 'app-favorite'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'NoDataComponent', 'selector': 'app-no-data'}];
+        var COMPONENT_TEMPLATE = '<div><app-loading *ngIf="loading"></app-loading><div *ngIf="!loading" class="container favorite-bg">  <div class="row"><ng-container *ngIf="people.length>0 "><app-card*ngFor="let person of people;  index as idx"  class="col-lg-3 col-md-4 col-sm-12 "  cardBtn="Delete"  name="{{ person.name }}"  planet="{{ person.homeworld }}"  gender="{{ person.gender }}"  height="{{ person.height }}"  birth="{{ person.birth_year }}"  hair="{{ person.hair_color }}"  skin="{{ person.skin_color }}"  eye="{{ person.eye_color }}"  (buttonClicked)="deleteButton(person.name)"  style="margin:0 auto;"></app-card></ng-container><ng-container *ngIf="!people.length && !loading">  <app-no-data  cardBtn="Go Home"  issue="No Favorite Yet"  (buttonClicked)="redirectToHome()"  ></app-no-data>    </ng-container>  </div>  </div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'FavoriteComponent', 'selector': 'app-favorite'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoadingComponent', 'selector': 'app-loading'},{'name': 'NoDataComponent', 'selector': 'app-no-data'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'FavoriteComponent'};
 </script>

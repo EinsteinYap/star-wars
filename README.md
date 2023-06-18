@@ -2,7 +2,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.5.
 
 # Please go to the documentation folder for the project's documentation
-
+This project documentation is inside the folder and open the file with name index.html
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
