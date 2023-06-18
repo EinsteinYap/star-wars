@@ -276,8 +276,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="57"
-                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:57</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:60</a></div>
                 </td>
             </tr>
 
@@ -345,8 +345,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="42"
-                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:42</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:45</a></div>
                 </td>
             </tr>
 
@@ -382,8 +382,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:30</a></div>
                 </td>
             </tr>
 
@@ -456,8 +456,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="75"
-                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:75</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:78</a></div>
                 </td>
             </tr>
 
@@ -626,7 +626,10 @@ ngOnInit() {
   this.loading&#x3D;true;
   const savedNamesString &#x3D; localStorage.getItem(&#x27;peopleSaved&#x27;);
   this.savedNames &#x3D; savedNamesString ? JSON.parse(savedNamesString) : null;
+  if(this.savedNames){
     this.getPeople();
+  }
+
 }
 
 getPeople(){
