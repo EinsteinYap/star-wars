@@ -31,9 +31,9 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-  background:url("https://ae01.alicdn.com/kf/H4815214cf9d94c69a8316f5450f03882m/Darth-Vader-Death-Star-Graphic-yoda-han-solo-luke-anakin-JEDI-Man-T-Shirt-Sz-S.jpg_Q90.jpg_.webp");
-	box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-  background-size: cover;
+  background: url('https://bestanimations.com/media/star-wars/1337661684darth-vader-star-wars-animated-gif-7.gif');
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  background-size:100% 100%;
 	backdrop-filter: blur(15px);
 	border: 10px ridge purple;
 	z-index: 10;
@@ -62,6 +62,136 @@
     color: rgb(253, 2, 44);
     font-size: 18px !important;
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 1);
+  }
+}
+
+// below are button's css
+.addBtn{
+  filter: hue-rotate(270deg)
+}
+.deleteBtn{
+  filter: hue-rotate(180deg)
+}
+.neon-buttons{
+  max-width: 10%;
+  max-height: 10%;
+  display: flex;
+  flex-direction: column;
+  // justify-content: left;
+  // align-items:left;
+  min-height: 100vh;
+	position: relative;
+
+
+}
+
+.neon-button{
+  position: relative;
+  display: inline-block;
+  padding: 1.5em 1.8em;
+  // margin: 2.5em 0;
+  color: #03e9f4;
+  font-size: 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: 0.5s;
+  letter-spacing:0.25em ;
+  -webkit-box-reflect: below 1px linear-gradient(transparent,#0005);
+}
+
+
+.neon-button:hover {
+  cursor: pointer;
+  background:#03e9f4;
+  color: #050801;
+  box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 200px #03e9f4;
+}
+
+.neon-button .neon-inner{
+  position: absolute;
+  display: block;
+}
+
+.neon-button .neon-inner:nth-child(1){
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 0.125em;
+  background: linear-gradient(90deg,transparent,#03e9f4);
+  animation:animate1 1s linear infinite;
+}
+@keyframes animate1
+{
+  0%
+  {
+      left:-100%;
+  }
+  50%,100%{
+      left:100%;
+  }
+}
+
+.neon-button .neon-inner:nth-child(2){
+  top: -100%;
+  right:0;
+  width: 0.125em;
+  height: 100%;
+  background: linear-gradient(180deg,transparent,#03e9f4);
+  animation:animate2 1s linear infinite;
+  animation-delay: 0.25s;
+}
+@keyframes animate2
+{
+  0%
+  {
+      top:-100%;
+  }
+  50%,100%{
+      top:100%;
+  }
+}
+
+.neon-button .neon-inner:nth-child(3){
+  bottom: 0;
+  right:-100%;
+  width: 100%;
+  height: 0.125em;
+  background: linear-gradient(270deg,transparent,#03e9f4);
+  animation:animate3 1s linear infinite;
+  animation-delay: 0.5s;
+}
+@keyframes animate3
+{
+  0%
+  {
+      right:-100%;
+  }
+  50%,100%{
+      right:100%;
+  }
+}
+
+.neon-button .neon-inner:nth-child(4){
+  bottom: -100%;
+  left:0;
+  width: 0.125em;
+  height: 100%;
+  background: linear-gradient(360deg,transparent,#03e9f4);
+  animation:animate4 1s linear infinite;
+  animation-delay: 0.75s;
+}
+@keyframes animate4
+{
+  0%
+  {
+      bottom:-100%;
+  }
+  50%,100%{
+      bottom:100%;
   }
 }
 

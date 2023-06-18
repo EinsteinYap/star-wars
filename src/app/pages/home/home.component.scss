@@ -1,8 +1,10 @@
 :host{
   display: block;
   background: url("https://i.pinimg.com/originals/2b/d3/8e/2bd38e31a22877a17fa63e3d771f8624.gif") !important ;
-  background-repeat:repeat-y;
-  background-size:contain !important;
+  background-size:100% !important;
+  background-size: 100% 100% !important;
+  background-repeat: repeat-y;
+  min-height: 100vh;
 }
 
 //search css
@@ -19,5 +21,24 @@
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
+}
+
+//card-section
+// .card-section{
+//   height: 100vh;
+// }
+
+//pagination from bootstrap
+.page-link{
+  background-color: rgb(3, 3, 3);
+  &:hover{
+    cursor: pointer;
+  }
+
+}
+
+.page-item.disabled .page-link{
+  color: black;
+  background-color: gray;
 }
 

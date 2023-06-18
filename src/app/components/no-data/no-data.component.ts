@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component,EventEmitter,Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-no-data',
@@ -7,4 +7,13 @@ import { Component,Input } from '@angular/core';
 })
 export class NoDataComponent {
 @Input() issue!:string
+@Input() btnColor!:string;
+@Input() cardBtn!: string;
+@Output() buttonClicked: EventEmitter<void> = new EventEmitter<void>();
+constructor() {}
+ngOnInit(): void {}
+
+handleButtonClick(): void {
+   this.buttonClicked.emit();
+ }
 }

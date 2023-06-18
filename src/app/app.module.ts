@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FavoriteComponent } from './pages/favorite/favorite.component';
 import { NoDataComponent } from './components/no-data/no-data.component';
 import { LocationStrategy,HashLocationStrategy } from '@angular/common';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LocationStrategy,HashLocationStrategy } from '@angular/common';
     HeaderComponent,
     CardComponent,
     FavoriteComponent,
-    NoDataComponent
+    NoDataComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

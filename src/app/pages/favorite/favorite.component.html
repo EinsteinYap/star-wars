@@ -1,7 +1,8 @@
 
-<div class="container favorite-bg">
+<app-loading *ngIf="loading"></app-loading>
+<div *ngIf="!loading" class="container favorite-bg">
   <div class="row">
-<ng-container *ngIf="people.length>0">
+<ng-container *ngIf="people.length>0 ">
 <app-card
 *ngFor="let person of people;  index as idx"
   class="col-lg-3 col-md-4 col-sm-12 "
@@ -18,9 +19,11 @@
   style="margin:0 auto;"
 ></app-card>
 </ng-container>
-<ng-container *ngIf="!people.length">
+<ng-container *ngIf="!people.length && !loading">
   <app-no-data
+  cardBtn="Go Home"
   issue="No Favorite Yet"
+  (buttonClicked)="redirectToHome()"
   ></app-no-data>
     </ng-container>
   </div>

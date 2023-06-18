@@ -1,36 +1,49 @@
-
-<div *ngIf="loading" class="loading-screen">
-  <!-- Loading screen or spinner HTML content -->
-</div>
+<app-loading *ngIf="loading"></app-loading>
 
 <div class="container" *ngIf="!loading">
-<div class="row">
-  <input type="text" [(ngModel)]="searchValue" (keyup)="searchByName(searchValue)" placeholder="Search by name" class="search-bar"/>
+  <div class="row">
+    <input type="text" [(ngModel)]="searchValue" (keyup)="searchByName(searchValue)" placeholder="Search by name" class="search-bar" />
+  </div>
 
+  <div class="row card-section" *ngIf="!loading">
+    <ng-container *ngIf="people.length > 0">
+      <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let person of pagedPeople; let i = index">
+        <app-card
+          btnColor="add"
+          cardBtn="Favorite"
+          name="{{ person.name }}"
+          planet="{{ person.homeworld }}"
+          gender="{{ person.gender }}"
+          height="{{ person.height }}"
+          birth="{{ person.birth_year }}"
+          hair="{{ person.hair_color }}"
+          skin="{{ person.skin_color }}"
+          eye="{{ person.eye_color }}"
+          (buttonClicked)="handleButtonClicked(person.name)"
+          style="margin-bottom: 20px;"
+        ></app-card>
+      </div>
+      <div class="col-12">
+        <nav>
+          <ul class="pagination justify-content-right ">
+            <li class="page-item" [class.disabled]="currentPage === 1">
+              <a class="page-link" (click)="changePage(currentPage - 1)">Previous</a>
+            </li>
+            <li class="page-item" *ngFor="let page of getPagesArray()" [class.active]="currentPage === page">
+              <a class="page-link" (click)="changePage(page)">{{ page }}</a>
+            </li>
+            <li class="page-item" [class.disabled]="currentPage === totalPages">
+              <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!people.length">
+      <app-no-data
+        cardBtn="Go Home"
+        issue="No data Found"
+      ></app-no-data>
+    </ng-container>
+  </div>
 </div>
-
-
-  <div class="row" *ngIf="!loading">
-<app-card
-*ngFor="let person of people;  index as idx"
-  class="col-lg-3 col-md-4 col-sm-12 "
-  btnColor="add"
-  cardBtn="Favorite"
-  name="{{ person.name }}"
-  planet="{{person.homeworld }}"
-  gender="{{ person.gender }}"
-  height="{{ person.height }}"
-  birth="{{ person.birth_year }}"
-  hair="{{ person.hair_color }}"
-  skin="{{ person.skin_color }}"
-  eye="{{ person.eye_color }}"
-  (buttonClicked)="handleButtonClicked(person.name)"
-  style="margin:0 auto;"
-></app-card>
-<ng-container *ngIf="!people.length">
-<app-no-data
-issue="No data Found"
-></app-no-data>
-  </ng-container>
-  </div>
-  </div>

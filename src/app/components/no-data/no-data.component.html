@@ -14,4 +14,19 @@
       </div>
   </div>
 </div>
+<div class="text-center">
+  <div>
+    <a
+      class="neon-button "
+      (click)="handleButtonClick()"
+      [ngClass]="[btnColor === 'add' ? 'addBtn' : 'deleteBtn']"
+    >
+    <span class="neon-inner"></span>
+    <span class="neon-inner"></span>
+    <span class="neon-inner"></span>
+    <span class="neon-inner"></span>
+    {{ cardBtn }}
+    </a>
+  </div>
+</div>
 </div>

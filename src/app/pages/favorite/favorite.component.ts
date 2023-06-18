@@ -12,6 +12,7 @@ export class FavoriteComponent {
   people: any[] = [];
   peopleSaved:string[]=[];
   savedNames: string[]=[];
+  loading=true;
 
 constructor(private swapiService: SwapiService,private router: Router){
 
@@ -19,19 +20,25 @@ constructor(private swapiService: SwapiService,private router: Router){
 ngOnInit() {
   const savedNamesString = localStorage.getItem('peopleSaved');
   this.savedNames = savedNamesString ? JSON.parse(savedNamesString) : null;
-this.getPeople();
+  if(this.savedNames){
+    this.getPeople();
+  }
 }
 
 getPeople(){
+
   this.swapiService.getPeople().subscribe({
     next: (data) => {
       this.people = data.results.filter((person: { name: string; }) => this.savedNames.includes(person.name));
       this.fetchHomeworldNames();
+      this.loading=false;
     },
     error: (error) => {
       console.log('An error while fetching people:', error);
     }
   });
+
+
 }
 fetchHomeworldNames() {
   this.people.forEach((person) => {
