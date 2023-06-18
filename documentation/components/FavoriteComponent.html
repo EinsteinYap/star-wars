@@ -276,8 +276,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:56</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:57</a></div>
                 </td>
             </tr>
 
@@ -345,8 +345,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="43"
-                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:43</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:42</a></div>
                 </td>
             </tr>
 
@@ -382,8 +382,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:27</a></div>
                 </td>
             </tr>
 
@@ -456,8 +456,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="74"
-                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:74</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">src/app/pages/favorite/favorite.component.ts:75</a></div>
                 </td>
             </tr>
 
@@ -492,7 +492,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>true</code>
+                        <i>Default value : </i><code>false</code>
                     </td>
                 </tr>
                     <tr>
@@ -617,17 +617,16 @@ export class FavoriteComponent {
   people: any[] &#x3D; [];
   peopleSaved:string[]&#x3D;[];
   savedNames: string[]&#x3D;[];
-  loading&#x3D;true;
+  loading&#x3D;false;
 
 constructor(private swapiService: SwapiService,private router: Router){
 
 }
 ngOnInit() {
+  this.loading&#x3D;true;
   const savedNamesString &#x3D; localStorage.getItem(&#x27;peopleSaved&#x27;);
   this.savedNames &#x3D; savedNamesString ? JSON.parse(savedNamesString) : null;
-  if(this.savedNames){
     this.getPeople();
-  }
 }
 
 getPeople(){
@@ -640,9 +639,9 @@ getPeople(){
     },
     error: (error) &#x3D;&gt; {
       console.log(&#x27;An error while fetching people:&#x27;, error);
+      this.loading&#x3D;false;
     }
   });
-
 
 }
 fetchHomeworldNames() {
@@ -651,9 +650,11 @@ fetchHomeworldNames() {
     this.swapiService.getPlanet(person.homeworld).subscribe({
       next: (planet) &#x3D;&gt; {
         person.homeworld &#x3D; planet.name;
+        this.loading&#x3D;false;
       },
       error: (error) &#x3D;&gt; {
         console.log(&#x27;An error occurred while fetching homeworld:&#x27;, error);
+        this.loading&#x3D;false;
       }
     });
   });
