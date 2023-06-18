@@ -12,17 +12,16 @@ export class FavoriteComponent {
   people: any[] = [];
   peopleSaved:string[]=[];
   savedNames: string[]=[];
-  loading=true;
+  loading=false;
 
 constructor(private swapiService: SwapiService,private router: Router){
 
 }
 ngOnInit() {
+  this.loading=true;
   const savedNamesString = localStorage.getItem('peopleSaved');
   this.savedNames = savedNamesString ? JSON.parse(savedNamesString) : null;
-  if(this.savedNames){
     this.getPeople();
-  }
 }
 
 getPeople(){
@@ -35,9 +34,9 @@ getPeople(){
     },
     error: (error) => {
       console.log('An error while fetching people:', error);
+      this.loading=false;
     }
   });
-
 
 }
 fetchHomeworldNames() {
@@ -46,9 +45,11 @@ fetchHomeworldNames() {
     this.swapiService.getPlanet(person.homeworld).subscribe({
       next: (planet) => {
         person.homeworld = planet.name;
+        this.loading=false;
       },
       error: (error) => {
         console.log('An error occurred while fetching homeworld:', error);
+        this.loading=false;
       }
     });
   });
